@@ -1,0 +1,5 @@
+<h3>Personajes</h3>
+<hr>
+<div *ngFor="let item of listaPersonajes; let i = index">
+    <li>{{item.nombre}} - {{item.poder | number}}</li>
+</div>

@@ -1,0 +1,33 @@
+//Crear nueva aplicacion
+	ng new "nombreAplicacion"
+
+//Crear un nuevo module
+	ng g m nombreModulo
+
+//Crear un nuevo componente 				//sin archivo prueba // sin archivo css independiente
+	ng g c rutaModulo/nombreComponente      --skipTests -is
+
+//crear un servicio
+		//Carpeta donde crear // carpeta servicio // nombreServicio
+	ng g s gifs/services/gifs
+
+// Generar build a producción
+	ng build --prod
+
+
+//Instalacion de primeNG.
+npm install primeng
+
+//generar un router //creacion manual tambien se puede hacer ng g router
+	ng g m appRouter --flat    ///--flat para que genere sin carpeta
+
+//generar guard
+	//Es otro tipo de servicio que sirve para controlar quien puede acceder a rutas especificas dentro del app-routing
+	ng g guard "ruta/"
+
+
+
+// Angular flex
+npm i @angular/flex-layout
+
+

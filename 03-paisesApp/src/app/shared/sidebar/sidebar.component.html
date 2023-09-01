@@ -1,0 +1,9 @@
+<h2>Busquedas</h2>
+<hr>
+<ul class="list-group">
+    <!-- [routerLinkActiveOptions]="{exact:true}" para que no ponga la clase active en otros paths que no sean exacto en el que se encuentra, esto se pone ya que el path por defecto es un ""-->
+    <li routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="list-group-item">Buscar
+        País</li>
+    <li routerLink="region" routerLinkActive="active" class="list-group-item">Por región</li>
+    <li routerLink="capital" routerLinkActive="active" class="list-group-item">Por capital</li>
+</ul>

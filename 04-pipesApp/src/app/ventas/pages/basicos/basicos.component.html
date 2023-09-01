@@ -1,0 +1,72 @@
+<div class="text-leyout">
+    <h1>Pipes Básicos</h1>
+    <p>
+        Pipes incluidos en Angular - Usualmente en el Common Module.
+    </p>
+</div>
+
+<div class="grid">
+    <div class="col-4">
+        <p-card header="uppecase" [subheader]="nombreUppercase">
+            <!-- Tambien se puede aplicar directamente en subtitile ya que al poner entre [] 
+            el tenxto "nombreUppercase" trae la variable y no es un text -->
+            <!-- <p-card header="uppecase" [subheader]="nombreUppercase | uppercase"> -->
+            {{ nombreUppercase | uppercase }}
+        </p-card>
+    </div>
+    <div class="col-4">
+        <p-card header="lowercase" [subheader]="nombreLowercase">
+            {{ nombreLowercase | lowercase }}
+        </p-card>
+    </div>
+    <div class="col-4">
+        <p-card header="titlecase" [subheader]="nombreTitleCase">
+            {{ nombreTitleCase | titlecase }}
+        </p-card>
+    </div>
+</div>
+
+<div class="text-leyout">
+    <h1>Pipes Date | Fecha | Time</h1>
+    <p>
+        Pipes para mostrar la fecha de diferente formato.
+        link de documentación: <a>https://angular.io/api/common/DatePipe</a>
+    </p>
+</div>
+
+<div class="grid">
+    <div class="col-6">
+        <p-card>
+            <ul>
+                <li>fecha</li>
+                <li>fecha | date</li>
+                <li>fecha | date:'short'</li>
+                <li>fecha | date:'long'</li>
+                <li>fecha | date:'dd-MM-yyy HH:ss'</li>
+            </ul>
+            <hr>
+            <ul>
+                <li>fecha | date:'long':'GTM-6'</li>
+                <li>fecha | date:'long':'GTM-4'</li>
+                <li>fecha | date:'long':'GTM-4': 'fr'</li>
+            </ul>
+        </p-card>
+    </div>
+    <div class="col-6">
+        <p-card>
+            <ul>
+                <li>{{fecha}}</li>
+                <li>{{fecha | date}}</li>
+                <li>{{fecha | date: 'short'}}</li>
+                <li>{{fecha | date: 'long'}}</li>
+                <li>{{fecha | date: 'dd-MM-yyy HH:ss'}}</li>
+            </ul>
+            <hr>
+            <ul>
+                <li>{{fecha | date:'long':'GTM-6': 'es-HN'}}</li>
+                <li>{{fecha | date:'long':'GTM-4'}}</li>
+                <li>{{fecha | date:'long':'GTM-4': 'fr'}}</li>
+            </ul>
+        </p-card>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<h2>Template: <small>Dinámicos</small></h2>
+<hr>
+
+<form autocomplete="off" #miFormularioDinamico="ngForm">
+    <!-- Nombre -->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-control">Nombre:</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" placeholder="Ingrese el nombre" name="nombre"
+                [(ngModel)]="persona.nombre" required>
+            <span *ngIf="validacionCampo()" class="form-text text-danger">
+                Este campo es obligatorio
+            </span>
+        </div>
+    </div>
+
+    <!-- Aregar -->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-control">Agregar:</label>
+        <div class="col-sm-9">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Agregar favorito" [(ngModel)]="nuevoJuego"
+                    name="nuevoJuego"
+                    (keyup.enter)="agregarJuego();">
+                <button class="btn btn-outline-primary" type="button" (click)="agregarJuego()">
+                    Agregar
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Listado favoritos -->
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-control">Favoritos:</label>
+        <div class="col-sm-9">
+            <div class="input-group mb-1" *ngFor="let item of persona.favorito; let i=index">
+                <input [(ngModel)]="item.nombre" name="item_{{i}}" class="form-control" required>
+                <button class="btn btn-outline-danger" type="button" (click)="eliminarJuego(i)">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-primary mb-4 float-end" (click)="guardar(miFormularioDinamico)"
+                [disabled]="miFormularioDinamico.invalid">Guardar</button>
+        </div>
+    </div>
+</form>
+
+<pre>{{persona | json}}</pre>
