@@ -1,0 +1,93 @@
+<h2>Validaciones Reactivas</h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="submitFormulario()">
+            <!-- Nombre -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Nombre</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Nombre del usuario" formControlName="nombre">
+                    <span class="form-text text-danger" *ngIf="campoValido('nombre')">
+                        Debe ser en formato de nombre y apellido
+                    </span>
+                </div>
+            </div>
+            <!-- Email -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" placeholder="Nombre del email" formControlName="email">                
+                    <!-- SE OPTIMIZA CODIGO DE VALIDACIONES-->
+                    <span class="form-text text-danger" *ngIf="campoValido('email')">
+                        {{ emailErrorMsg }}
+                    </span>
+                    <!-- <span class="form-text text-danger" *ngIf="emailRequired()">
+                        Email es obligatorio
+                    </span>
+                    <span class="form-text text-danger" *ngIf="emailInvalido()">
+                        Debe ingresar un email válido
+                    </span>
+                    <span class="form-text text-danger" *ngIf="emailTomado()">
+                        El eamil ya se encuentra usado
+                    </span> -->
+                </div>
+            </div>
+            <!-- Username -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Username</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" placeholder="Username" formControlName="username" />
+                    <span class="form-text text-danger" *ngIf="campoValido('username')">
+                        No debe ser Strider
+                    </span>
+                </div>
+            </div>
+            <!-- Passwprd -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Pasword</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" placeholder="Contraseña de su cuenta"
+                        formControlName="password">
+                    <span class="form-text text-danger" *ngIf="campoValido('password')">
+                        El password sebe tener minimo 6 caracteres
+                    </span>
+                </div>
+            </div>
+            <!-- Passwprd2 -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Confirmar</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" placeholder="Repita su contraseña"
+                        formControlName="password2">
+                    <span class="form-text text-danger" *ngIf="campoValido('password2')">
+                        Las constraseñas deben ser iguales
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <!-- Se desactiva el boton mientras hace la perticion del validador del email -->
+                    <button class="btn btn-primary float-end" type="submit" [disabled]="miFormulario.pending">
+                        Crear
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<h2>Form Valid: {{miFormulario.valid}}</h2>
+<h2>Form Status: {{miFormulario.status}}</h2>
+<h2>Form Pending: {{miFormulario.pending}}</h2>
+<h2>Form errors: {{miFormulario.errors | json}}</h2>
+<h2>Nombre</h2>
+<pre>{{ miFormulario.controls['nombre'].errors | json}}</pre>
+<h2>Email</h2>
+<pre>{{ miFormulario.controls['email'].errors | json}}</pre>
+<h2>Username</h2>
+<pre>{{ miFormulario.controls['username'].errors | json}}</pre>
+<h2>Password</h2>
+<pre>{{ miFormulario.controls['password'].errors | json}}</pre>
+<h2>Confirmar pass</h2>
+<pre>{{ miFormulario.controls['password2'].errors | json}}</pre>
