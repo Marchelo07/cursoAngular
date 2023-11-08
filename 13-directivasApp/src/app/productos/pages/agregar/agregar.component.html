@@ -1,0 +1,46 @@
+<h1 class="mt-5">Agregar producto {{textoNombre}}</h1>
+<hr>
+
+<form [formGroup]="miFormulario" autocomplete="off">
+    <div class="row g-3 align-items-center mb-3">
+        <div class="col-auto">
+            <label class="col-form-label">Nombre:</label>
+        </div>
+        <div class="col-auto">
+            <input type="text" class="form-control" formControlName="nombre">
+        </div>
+        <div class="col-auto">
+            <!-- <span error-msg *ngIf="tieneError('nombre')"></span> -->
+            <span class="form-text" error-msg [color]="color" [mensaje]="textoNombre"
+                [valido]="!tieneError('nombre')">Este campo es requerido</span>
+                <!-- *ngIf="tieneError('nombre')">Este campo es requerido</span> -->
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <button class="btn btn-primary" (click)="cambiarNombre()">
+                Guardar
+            </button>
+            <button class="btn btn-secundary" (click)="cambiarColor()">
+                Cambiar color
+            </button>
+        </div>
+    </div>
+</form>
+
+<h3 class="mt-5">Formulario</h3>
+<div>
+    <pre>Value: {{miFormulario.value | json}}</pre>
+    <pre>Valid: {{miFormulario.valid}}</pre>
+</div>
+
+<!-- <div class="row mt-5" customIf *ngIf="!tieneError('nombre')"> -->
+<!-- Directiva estructural para mostrar u ocultar el elmento  -->
+<!-- * pasamos la referencia de todo el elemento -->
+    <div class="row mt-5" *customIf="miFormulario.valid">
+    <div class="col">
+        <div class="alert alert-primary">
+            Todo OK!
+        </div>
+    </div>
+</div>
